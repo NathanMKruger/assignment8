@@ -1,3 +1,4 @@
+//	Nathan Kruger
 //
 //  Graph.h
 //  
@@ -107,6 +108,32 @@ namespace csi281 {
             // YOUR CODE HERE
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
+			V frontier(stack[Node[V]] = stack());
+			frontier.push(Node(start, NULL));
+
+			explored(set[V] = {start});
+
+			while (!frontier.empty)
+			{
+				current_node (Node[V] = frontier.pop());
+				current_state (V = current_node.state);
+
+				if (goal = current_state)
+				{
+					return current_node
+				}
+
+				for (int i = 0; i < current_state; i++)
+				{
+					if (i == explored)
+					{
+						break;
+					}
+					explored.add(i);
+					frontier.push(Node(i, current_node));
+				}
+			};
+			return NULL;
         }
         
         // Perform a breadth-first search from *start*, looking for *goal*
@@ -122,6 +149,32 @@ namespace csi281 {
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
             // TIP: This should be very similar to dfs
+				V frontier(stack[Node[V]] = stack());
+				frontier.push(Node(start, NULL));
+
+				explored(queue[V] = { start });
+
+				while (!frontier.empty)
+				{
+					current_node(Node[V] = frontier.pop());
+					current_state(V = current_node.state);
+
+					if (goal = current_state)
+					{
+						return current_node
+					}
+
+					for (int i = 0; i < current_state; i++)
+					{
+						if (i == explored)
+						{
+							break;
+						}
+						explored.add(i);
+						frontier.push(Node(i, current_node));
+					}
+				};
+				return NULL;
         }
         
         // Utility function if you need it
