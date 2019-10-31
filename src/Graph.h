@@ -108,32 +108,31 @@ namespace csi281 {
             // YOUR CODE HERE
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
-			V frontier(stack[Node[V]] = stack());
-			frontier.push(Node(start, NULL));
+			stack<V> frontier;
+			frontier.push(start);
 
-			explored(set[V] = {start});
+			explored.insert({ V, start });
 
 			while (!frontier.empty)
 			{
-				current_node (Node[V] = frontier.pop());
-				current_state (V = current_node.state);
+				V currentNode = frontier.pop();
 
-				if (goal = current_state)
+				if (explored[V] == goal)
 				{
-					return current_node
+					return explored[V];
 				}
 
-				for (int i = 0; i < current_state; i++)
+				for (int i = 0; i < frontier.size(); i++)
 				{
-					if (i == explored)
+					if (frontier[i] == explored)
 					{
-						break;
+						continue;
 					}
-					explored.add(i);
-					frontier.push(Node(i, current_node));
+					explored.insert(frontier[i]);
+					frontier.push(frontier[i], currentNode);
 				}
 			};
-			return NULL;
+			return nullptr;
         }
         
         // Perform a breadth-first search from *start*, looking for *goal*
@@ -149,32 +148,31 @@ namespace csi281 {
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
             // TIP: This should be very similar to dfs
-				V frontier(stack[Node[V]] = stack());
-				frontier.push(Node(start, NULL));
+			queue<V> frontier;
+			frontier.push(start);
 
-				explored(queue[V] = { start });
+			explored.insert({ V, start });
 
-				while (!frontier.empty)
+			while (!frontier.empty)
+			{
+				V currentNode = frontier.pop();
+
+				if (explored[V] == goal)
 				{
-					current_node(Node[V] = frontier.pop());
-					current_state(V = current_node.state);
+					return explored[V];
+				}
 
-					if (goal = current_state)
+				for (int i = 0; i < frontier.size(); i++)
+				{
+					if (frontier[i] == explored)
 					{
-						return current_node
+						continue;
 					}
-
-					for (int i = 0; i < current_state; i++)
-					{
-						if (i == explored)
-						{
-							break;
-						}
-						explored.add(i);
-						frontier.push(Node(i, current_node));
-					}
-				};
-				return NULL;
+					explored.insert(frontier[i]);
+					frontier.push(frontier[i], currentNode);
+				}
+			};
+			return nullptr;
         }
         
         // Utility function if you need it
