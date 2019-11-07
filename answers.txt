@@ -1,9 +1,18 @@
 Nathan Kruger
 
-1.
+1. It depends. Mostly on the size of the graph and how close the goal is to the starting point.
+"If we know the solution is not that far from the source vertex, use BFS."
+Source: https://www.techiedelight.com/depth-first-search-dfs-vs-breadth-first-search-bfs/
 
-2.
+2. O(V + E) where V is the number of vertices and E is the numbe of edges as "every vertex
+and every edge will be checked once."
+Source: https://brilliant.org/wiki/breadth-first-search-bfs/
 
-3.
+3. Adjacency lists are more flexible while an adjacenct matrix needs to be pre-allocated
+and re-allocated to a size so if this social graph of friends isn't a dense graph, an ajancency
+matrix can be wasteful of memory.
+Source: Class Slides
 
-4.
+4. Testing multiple routes to find the shortest route from my apartment to Joyce for class. With
+some other Champlain buildings or locations as possible vertices and the roads, sidewalks, and
+campus walkways in between the defined verticies as edges.
