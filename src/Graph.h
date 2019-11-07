@@ -111,7 +111,7 @@ namespace csi281 {
 			stack<V> frontier;
 			frontier.push(start);
 
-			explored.insert({ V, start });
+			explored.insert(start);
 
 			while (!frontier.empty)
 			{
@@ -132,7 +132,7 @@ namespace csi281 {
 					frontier.push(frontier[i], currentNode);
 				}
 			};
-			return nullptr;
+			return nullopt;
         }
         
         // Perform a breadth-first search from *start*, looking for *goal*
@@ -151,9 +151,9 @@ namespace csi281 {
 			queue<V> frontier;
 			frontier.push(start);
 
-			explored.insert({ V, start });
+			explored.insert(start);
 
-			while (!frontier.empty)
+			while (!frontier.empty())
 			{
 				V currentNode = frontier.pop();
 
@@ -172,7 +172,7 @@ namespace csi281 {
 					frontier.push(frontier[i], currentNode);
 				}
 			};
-			return nullptr;
+			return nullopt;
         }
         
         // Utility function if you need it
