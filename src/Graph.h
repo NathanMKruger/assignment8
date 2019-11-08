@@ -126,7 +126,8 @@ namespace csi281 {
 
 			while (!frontier.empty)
 			{
-				V currentNode = frontier.pop();
+				V currentNode = frontier.front();
+				frontier.pop();
 
 				if (explored[currentNode] == goal)
 				{
@@ -166,7 +167,8 @@ namespace csi281 {
 
 			while (!frontier.empty())
 			{
-				V currentNode = frontier.pop();
+				V currentNode = frontier.front();
+				frontier.pop();
 
 				if (explored[currentNode] == goal)
 				{
