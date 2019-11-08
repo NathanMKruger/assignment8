@@ -78,14 +78,14 @@ namespace csi281 {
         // if either is not in the graph, return false
         bool edgeExists(const V &from, const V &to) {
             // YOUR CODE HERE
-			  if (adjacencyList.find(from) == adjacencyList.end())
-			  {
-				  return false;
+			if (adjacencyList.find(from) == adjacencyList.end())
+			{
+				return false;
 			}
 
-			  if (adjacencyList[from].find(to) == adjacencyList[from].end())
-			  {
-				  return false;
+			if (adjacencyList[from].find(to) == adjacencyList[from].end())
+			{
+				return false;
 			}
 
 			return true; //edge exists
@@ -120,28 +120,26 @@ namespace csi281 {
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
 			stack<V> frontier;
-			frontier.push(make_pair(start, nullopt));
-
-			explored.insert(start);
+			frontier.push(start);
 
 			while (!frontier.empty())
 			{
-				V currentNode = frontier.front();
+				V currentNode = frontier.top();
 				frontier.pop();
 
 				if (explored[currentNode] == goal)
 				{
-					return explored[currentNode];
+					return pathMapToPath(explored, currentNode);
 				}
 
 				for (int i = 0; i < frontier.size(); i++)
 				{
-					if (frontier[i] == explored)
+					if (explored.find(frontier.top()) != explored.end())
 					{
 						continue;
 					}
-					explored.insert(frontier[i]);
-					frontier.push(make_pair(frontier[i], currentNode));
+					explored[frontier.top()] = currentNode;
+					frontier.push(currentNode);
 				}
 			}
 			return nullopt;
@@ -161,9 +159,9 @@ namespace csi281 {
             // TIP: Follow the pseudocode from the slides from class
             // TIP: This should be very similar to dfs
 			queue<V> frontier;
-			frontier.push(make_pair(start, nullopt));
+			frontier.push(start);
 
-			explored.insert(start);
+			//explored.insert(frontier.front());
 
 			while (!frontier.empty())
 			{
@@ -172,17 +170,17 @@ namespace csi281 {
 
 				if (explored[currentNode] == goal)
 				{
-					return explored[currentNode];
+					return pathMapToPath(explored, currentNode);
 				}
 
 				for (int i = 0; i < frontier.size(); i++)
 				{
-					if (frontier[i] == explored)
+					if (explored.find(frontier.front()) != explored.end())
 					{
 						continue;
 					}
-					explored.insert(frontier[i]);
-					frontier.push(make_pair(frontier[i], currentNode));
+					explored[frontier.front()] = currentNode;
+					frontier.push(currentNode);
 				}
 			}
 			return nullopt;
