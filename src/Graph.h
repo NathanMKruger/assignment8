@@ -124,7 +124,7 @@ namespace csi281 {
 
 			explored.insert(start);
 
-			while (!frontier.empty)
+			while (!frontier.empty())
 			{
 				V currentNode = frontier.front();
 				frontier.pop();
