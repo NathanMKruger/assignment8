@@ -161,8 +161,6 @@ namespace csi281 {
 			queue<V> frontier;
 			frontier.push(start);
 
-			//explored.insert(frontier.front());
-
 			while (!frontier.empty())
 			{
 				V currentNode = frontier.front();
