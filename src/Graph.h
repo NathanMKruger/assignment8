@@ -78,6 +78,17 @@ namespace csi281 {
         // if either is not in the graph, return false
         bool edgeExists(const V &from, const V &to) {
             // YOUR CODE HERE
+			  if (adjacencyList.find(from) == adjacencyList.end())
+			  {
+				  return false;
+			}
+
+			  if (adjacencyList[from].find(to) == adjacencyList[from].end())
+			  {
+				  return false;
+			}
+
+			return true; //edge exists
         }
         
         using Path = list<V>;
@@ -109,7 +120,7 @@ namespace csi281 {
             // TIP: Start by defining a frontier and putting start onto it.
             // TIP: Follow the pseudocode from the slides from class
 			stack<V> frontier;
-			frontier.push(start);
+			frontier.push(make_pair(start, nullopt));
 
 			explored.insert(start);
 
@@ -117,9 +128,9 @@ namespace csi281 {
 			{
 				V currentNode = frontier.pop();
 
-				if (explored[V] == goal)
+				if (explored[currentNode] == goal)
 				{
-					return explored[V];
+					return explored[currentNode];
 				}
 
 				for (int i = 0; i < frontier.size(); i++)
@@ -129,9 +140,9 @@ namespace csi281 {
 						continue;
 					}
 					explored.insert(frontier[i]);
-					frontier.push(frontier[i], currentNode);
+					frontier.push(make_pair(frontier[i], currentNode));
 				}
-			};
+			}
 			return nullopt;
         }
         
@@ -149,7 +160,7 @@ namespace csi281 {
             // TIP: Follow the pseudocode from the slides from class
             // TIP: This should be very similar to dfs
 			queue<V> frontier;
-			frontier.push(start);
+			frontier.push(make_pair(start, nullopt));
 
 			explored.insert(start);
 
@@ -157,9 +168,9 @@ namespace csi281 {
 			{
 				V currentNode = frontier.pop();
 
-				if (explored[V] == goal)
+				if (explored[currentNode] == goal)
 				{
-					return explored[V];
+					return explored[currentNode];
 				}
 
 				for (int i = 0; i < frontier.size(); i++)
@@ -169,9 +180,9 @@ namespace csi281 {
 						continue;
 					}
 					explored.insert(frontier[i]);
-					frontier.push(frontier[i], currentNode);
+					frontier.push(make_pair(frontier[i], currentNode));
 				}
-			};
+			}
 			return nullopt;
         }
         
